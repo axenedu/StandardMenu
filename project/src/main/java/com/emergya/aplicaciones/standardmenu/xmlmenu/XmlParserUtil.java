@@ -1,5 +1,37 @@
 package com.emergya.aplicaciones.standardmenu.xmlmenu;
 
+/**
+ * Copyright (C) 2011, Emergya (http://www.emergya.es)
+ *
+ * @author <a href="mailto:eserrano@emergya.com">Eduardo Serrano Luque</a>
+ * @author <a href="mailto:jsoler@emergya.com">Jaime Soler</a>
+ * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
+ * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
+ *
+ * This file is Component StandardMenu
+ *
+ * This software is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+02110-1301  USA
+ *
+ * As a special exception, if you link this library with other files to
+ * produce an executable, this library does not by itself cause the
+ * resulting executable to be covered by the GNU General Public License.
+ * This exception does not however invalidate any other reasons why the
+ * executable file might be covered by the GNU General Public License.
+ */
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,11 +55,11 @@ public class XmlParserUtil {
 	private static final String CHILDREN = "children";	
 	
 	/**
-	 * Metodo que obtiene el valor de un nodo hoja
-	 * @param doc, Document generado a partir del xml del menu
-	 * @param tagName, etiqueta del nodo a tratar
-	 * @param father, padre del nodo a tratar
-	 * @return String, valor del nodo
+	 * Gets info leaf node
+	 * @param doc, Document generated from menu xml
+	 * @param tagName, node tag 
+	 * @param father, parent node
+	 * @return String, value node
 	 */
 	public String getValueLeafNode(Document doc, String tagName, Node father){
 			
@@ -41,10 +73,10 @@ public class XmlParserUtil {
 	}
 	
 	/**
-	 * Retornara un mapa los parametros globales del nodo father
-	 * @param doc, Document generado a partir del xml
-	 * @param father, nodo del que quiero obtener los parametros globales
-	 * @return mapa con los parametros globlales
+	 * gets a map with global params
+	 * @param doc, Document generated from menu xml
+	 * @param father, node with the info
+	 * @return map with global params
 	 */
 	public Map<String, String> getGloblalParameters(Document doc, Node father){
 		
@@ -65,9 +97,9 @@ public class XmlParserUtil {
 	}
 	
 	/**
-	 * Retorna un mapa con los parametros del nodo father
-	 * @param doc, Document generado a partir del xml
-	 * @param father, nodo del que queremos obtener los parametros
+	 * gets a map with params
+	 * @param doc, Document generated from menu xml
+	 * @param father, node with the info
 	 * @return Map
 	 */
 	public Map<String, String> getParameters(Document doc, Node father){
@@ -89,10 +121,10 @@ public class XmlParserUtil {
 	}
 	
 	/**
-	 * Retorna el valor del atributo especificiadodel nodo n
-	 * @param n, nodo del que queremos obtener el valor del atributo
-	 * @param nameAttribute, atributo
-	 * @return String 
+	 * gets the value of attribute specified with nameAttribute
+	 * @param n, treated node
+	 * @param nameAttribute, attribute name
+	 * @return String Value
 	 */
 	public String getValueAttribute(Node n, String nameAttribute){
 		
@@ -103,11 +135,11 @@ public class XmlParserUtil {
 	}
 	
 	/**
-	 * De todos los nodos con dicho tagName, me devuelve el hijo correspondiente
-	 * al padre pasado como parametro
-	 * @param doc, Document generado a partir del xml
-	 * @param father, nodo padre
-	 * @param tagName, etiqueta del nodo a obtener
+	 * 
+	 * Of all nodes with the specified lable, it gets one whose parent matches with father
+	 * @param doc, Document generated from menu xml
+	 * @param father, parent node
+	 * @param tagName, node tagname
 	 * @return
 	 */
 	public Node getChildNode(Document doc, Node father, String tagName){
@@ -127,10 +159,10 @@ public class XmlParserUtil {
 	}
 	
 	/**
-	 * Lista de perfiles de un nodo
-	 * @param doc, Document generado a partir del xml
-	 * @param father, nodo padre a tratar
-	 * @return Lista de perfiles
+	 * Gets profile list of a node
+	 * @param doc, Document generated from menu xml
+	 * @param father, parent node
+	 * @return profile list
 	 */
 	public List<String> getProfiles(Document doc, Node father){
 		
@@ -151,10 +183,10 @@ public class XmlParserUtil {
 	}
 	
 	/**
-	 * Obtiene el boolean de la etiqueta correspondiente
-	 * @param doc, Document generado a partir del xml
-	 * @param tagname, etiqueta de la que quiero obtener el boolean
-	 * @param father, nodo padre
+	 * Gets boolean value of specified tagname
+	 * @param doc, Document generated from menu xml
+	 * @param tagname, specified tagname
+	 * @param father, parent node
 	 * @return boolean
 	 */
 	public boolean getBoolean(Document doc, String tagname, Node father){
@@ -167,8 +199,8 @@ public class XmlParserUtil {
 	}
 	
 	/**
-	 * Devuelve true si el elemento raiz contiene la etiqueta <nodes>
-	 * @param doc, Document generado a partir del xml
+	 * Return true if xml root has children
+	 * @param doc, Document generated from menu xml
 	 * @return boolean
 	 */
 	public boolean rootHasNodes(Document doc){
@@ -183,9 +215,9 @@ public class XmlParserUtil {
 		return hasNodes;
 	}
 	/**
-	 * Retorna la lista de <node> que cuelga de la raiz
-	 * @param doc, Document generado a partir del xml
-	 * @return NodeList
+	 * Return root children
+	 * @param doc, Document generated from menu xml
+	 * @return node list
 	 */
 	public List<Node> getListRootNodes(Document doc){
 		
@@ -208,10 +240,10 @@ public class XmlParserUtil {
 	}
 	
 	/**
-	 * Dado un nodo padre se retornara una lista con sus nodos hijos
-	 * @param doc, Document generado a partir del xml
-	 * @param father, Nodo del que vamos a obtener la lista de hijos
-	 * @return NodeList
+	 * Return Node list of father
+	 * @param doc, Document generated from menu xml
+	 * @param father, specified node
+	 * @return node list
 	 */
 	public List<Node> getListNodes(Document doc, Node father){
 		
@@ -233,9 +265,9 @@ public class XmlParserUtil {
 	}
 	
 	/**
-	 * Devuelve true si node tiene hijos
-	 * @param doc, Document generado a partir del xml
-	 * @param node, node que estamos tratando
+	 * Return true if node has children
+	 * @param doc, Document generated from menu xml
+	 * @param node, specified node
 	 * @return boolean
 	 */
 	public boolean nodeHasChildren(Document doc, Node node){

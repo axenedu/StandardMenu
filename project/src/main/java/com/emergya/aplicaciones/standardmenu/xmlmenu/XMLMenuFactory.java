@@ -1,12 +1,6 @@
 package com.emergya.aplicaciones.standardmenu.xmlmenu;
 
-import java.io.IOException;
 import java.util.Collection;
-import java.util.Properties;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
 
 import com.emergya.aplicaciones.standardmenu.IMenu;
 import com.emergya.aplicaciones.standardmenu.IMenuFactory;
@@ -48,14 +42,19 @@ import com.emergya.aplicaciones.standardmenu.MenuException;
 public class XMLMenuFactory implements IMenuFactory {
 	
 	private static final String SEPARATOR = "/";
-	private static final String MSG = "There was an error in getMenu";
 	
+	/**
+	 * Gets Imenu from xml name
+	 * @param nombre, xml name
+	 * @return IMenu, generated menu
+	 */
 	public IMenu getMenu(String nombre) throws MenuException {
 		
-		// Busqueda de la ruta del xml a partir de su nombre
+		// Xml path
 		String path = getPathByName(nombre);
 		
 		IMenu menu = null;
+		// Parser to read 
 		XmlParser parser = new XmlParser();
 		
 		menu = parser.createMenu(path);
@@ -64,6 +63,11 @@ public class XMLMenuFactory implements IMenuFactory {
 		return menu;
 	}
 	
+	/**
+	 * Shows menu structure 
+	 *
+	 * @param Imenu menu
+	 */
 	public void imprimeMenu(IMenu menu){
 		
 		System.out.println("Menu: " + menu.getName() + "--------\n");
@@ -82,6 +86,11 @@ public class XMLMenuFactory implements IMenuFactory {
 		}
 	}
 
+	/**
+	 * Print a node
+	 * @param deep node	
+	 * @param nodo, node 
+	 */
 	private void imprimeNodo(int deep, INodeMenu nodo){
 		
 		deep ++;
@@ -100,6 +109,11 @@ public class XMLMenuFactory implements IMenuFactory {
 		
 	}
 	
+	/**
+	 * Gets a path of xml from name of file
+	 *
+	 * @param description the new descripction
+	 */
 	private String getPathByName(String nombre){
 		
 		String path = null;

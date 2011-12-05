@@ -39,8 +39,6 @@ import java.util.Map;
 
 public abstract class AbstractNodeMenu implements INodeMenu, Comparable<INodeMenu> {
 
-	private IMenu menu;
-	
 	private String text;
 	private int weight;
 	private String url;
@@ -55,53 +53,64 @@ public abstract class AbstractNodeMenu implements INodeMenu, Comparable<INodeMen
 	private boolean active;
 	
 	/**
-	 * 
 	 * {@inheritDoc}
 	 */
-	public IMenu getMenu() {
-		return menu;
-	}
-
-	/**
-	 * 
-	 * {@inheritDoc}
-	 */
-	public void setMenu(IMenu menu) {
-		this.menu = menu;
-	}
-	
 	public String getText() {
 		return text;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setText(String text) {
 		this.text = text;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public int getWeight() {
 		return weight;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getUrl() {
 		return url;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getIconUrl() {
 		return iconUrl;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setIconUrl(String iconUrl) {
 		this.iconUrl = iconUrl;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Collection<INodeMenu> getChildren() {
 		return children;
 	}
@@ -109,80 +118,137 @@ public abstract class AbstractNodeMenu implements INodeMenu, Comparable<INodeMen
 	public void setChildren(Collection<INodeMenu> children) {
 		this.children = children;		
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public INodeMenu getParent() {
 		return parent;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setParent(INodeMenu parent){
 		this.parent = parent;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Map<String, String> getParams() {
 		return params;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void addParam(String key, String value) {
 		params.put(key, value);
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getParamValue(String key) {
 		return params.get(key);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void addGlobalParam(String key, String value) {
 		globalParams.put(key, value);		
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void removeGlobalParam(String key) {
 		globalParams.remove(key);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Iterator<String> getGlobalParams() {
 		Iterator it = globalParams.entrySet().iterator();
 		return it;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setParams(Map<String, String> params) {
 		this.params = params;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setGlobalParams(Map<String, String> globalParams) {
 		this.globalParams = globalParams;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Collection<String> getProfiles() {
 		return profiles;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setProfiles(Collection<String> profiles) {
 		this.profiles = profiles;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public boolean getEnabled() {
 		return enabled;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public boolean getCollapsed() {
 		return collapsed;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setCollapsed(boolean collapsed) {
 		this.collapsed = collapsed;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public boolean getActive() {
 		return active;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String GETUrl() {
 		String url = this.getUrl();
 		
@@ -201,7 +267,11 @@ public abstract class AbstractNodeMenu implements INodeMenu, Comparable<INodeMen
 		return url;
 	}
 
-	
+	/**
+	 * Compares two INodeMenu to determine the position
+	 * @param INodeMenu
+	 * @return int
+	 */
 	public int compareTo(INodeMenu nm) {
 		int cmp = 0;
 		

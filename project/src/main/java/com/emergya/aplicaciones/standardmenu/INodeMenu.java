@@ -226,7 +226,7 @@ public interface INodeMenu {
 	public void setActive(boolean active);
 	
 	/**
-	 * Gets the url.
+	 * Gets the url. Parameters will be included.
 	 *
 	 * @return the string
 	 */

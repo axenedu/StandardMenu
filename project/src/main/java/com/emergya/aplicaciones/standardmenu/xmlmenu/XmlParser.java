@@ -1,5 +1,37 @@
 package com.emergya.aplicaciones.standardmenu.xmlmenu;
 
+/**
+ * Copyright (C) 2011, Emergya (http://www.emergya.es)
+ *
+ * @author <a href="mailto:eserrano@emergya.com">Eduardo Serrano Luque</a>
+ * @author <a href="mailto:jsoler@emergya.com">Jaime Soler</a>
+ * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
+ * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
+ *
+ * This file is Component StandardMenu
+ *
+ * This software is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+02110-1301  USA
+ *
+ * As a special exception, if you link this library with other files to
+ * produce an executable, this library does not by itself cause the
+ * resulting executable to be covered by the GNU General Public License.
+ * This exception does not however invalidate any other reasons why the
+ * executable file might be covered by the GNU General Public License.
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
@@ -13,7 +45,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.emergya.aplicaciones.standardmenu.IMenu;
@@ -36,9 +67,9 @@ public class XmlParser {
 	private static final String MSG = "There was an error in createMenu";
 	
 	/**
-	 * Dado una ruta que apunta a un xml se generará un menu
-	 * @param path, ruta del xml que contiene la estructura del menu
-	 * @return IMenu, menu conformado
+	 * Using a xml it will generate a IMenu
+	 * @param path, xml path
+	 * @return IMenu, generated menu
 	 * @throws ParserConfigurationException
 	 * @throws SAXException
 	 * @throws IOException
@@ -65,8 +96,8 @@ public class XmlParser {
 	}
 
 	/**
-	 * Dado un document generará una instancia de IMenu
-	 * @param doc, Document obtenido a partir del xml
+	 * Xml reader
+	 * @param doc, Document generated from menu xml
 	 * @return IMenu
 	 */
 	public IMenu readMenu(Document doc){
@@ -117,10 +148,10 @@ public class XmlParser {
 	}
 	
 	/**
-	 * Método recursivo que recorrera todos los nodos del menu
-	 * @param n, Nodo que estamos tratando
-	 * @param doc, doc obtenido a partir dl xml
-	 * @return INodeMenu, cada hijo del nodo n
+	 * Recursive method that will cover every node in the menu
+	 * @param n, actual node
+	 * @param doc, Document generated from menu xml
+	 * @return INodeMenu list
 	 */	
 	public List<INodeMenu> getChildren(Document doc, Node node, INodeMenu parent){
 		
@@ -152,11 +183,11 @@ public class XmlParser {
 		return children;
 	}
 	/**
-	 * Dado un nodo, setea todas sus propiedades
-	 * @param doc, Document generado a partir del xml
-	 * @param n, Node que contiene la info del nodo
-	 * @param father, INodeMenu padre
-	 * @return INodeMenu seteado
+	 * Sets node properties
+	 * @param doc, Document generated from menu xml
+	 * @param n, Node that contais info node
+	 * @param father, INodeMenu father
+	 * @return INodeMenu
 	 */
 	public INodeMenu parseNode(Document doc, Node n, INodeMenu father){
 		

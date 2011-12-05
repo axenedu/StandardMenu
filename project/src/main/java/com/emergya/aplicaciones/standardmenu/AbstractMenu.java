@@ -32,7 +32,6 @@ package com.emergya.aplicaciones.standardmenu;
  * executable file might be covered by the GNU General Public License.
  */
 
-
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -45,64 +44,109 @@ public abstract class AbstractMenu implements IMenu {
 	private String baseUrl;
 	private Collection<String> profiles;
 	private Map<String, String> globalParams;
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getDescription() {
 		return description;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setDescripction(String description) {
 		this.description = description;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Collection<INodeMenu> getChildren() {
 		return children;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setChildren(Collection<INodeMenu> children) {
 		this.children = children;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getBaseUrl() {
 		return baseUrl;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setBaseUrl(String baseUrl) {
 		this.baseUrl = baseUrl;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Collection<String> getProfiles() {
 		return profiles;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setProfiles(Collection<String> profiles) {
 		this.profiles = profiles;		
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Iterator<String> getGlobalParamskeys() {
 		Iterator it = globalParams.entrySet().iterator();
 		return it;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void addGlobalParam(String key, String value) {
 		globalParams.put(key, value);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getGlobalParam(String key) {
 		return globalParams.get(key);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Map<String, String> getGlobalParams() {
 		return globalParams;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void setGlobalParams(Map<String, String> globalParams) {
 		this.globalParams = globalParams;
 	}
