@@ -118,8 +118,8 @@ public abstract class AbstractMenu implements IMenu {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Iterator<String> getGlobalParamskeys() {
-		Iterator it = globalParams.entrySet().iterator();
+	public Iterator<Map.Entry<String, String>> getGlobalParamskeys() {
+		Iterator<Map.Entry<String, String>> it = globalParams.entrySet().iterator();
 		return it;
 	}
 	

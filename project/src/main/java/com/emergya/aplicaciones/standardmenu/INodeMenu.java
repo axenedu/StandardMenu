@@ -39,7 +39,7 @@ import java.util.Map;
 /**
  * The Interface INodeMenu.
  */
-public interface INodeMenu {
+public interface INodeMenu extends Comparable<INodeMenu>{
 
 	/**
 	 * Gets the text.
@@ -167,7 +167,7 @@ public interface INodeMenu {
 	 *
 	 * @return the global params
 	 */
-	public Iterator<String> getGlobalParams();
+	public Iterator<Map.Entry<String, String>> getGlobalParams();
 	
 	/**
 	 * Gets the profiles.
@@ -230,7 +230,14 @@ public interface INodeMenu {
 	 *
 	 * @return the string
 	 */
-	public String GETUrl();
+	public String getGETUrl();
+	
+	/**
+	 * Compares two INodeMenu to determine the position
+	 * @param INodeMenu
+	 * @return int
+	 */
+	public int compareTo(INodeMenu nm);
 	
 }
 

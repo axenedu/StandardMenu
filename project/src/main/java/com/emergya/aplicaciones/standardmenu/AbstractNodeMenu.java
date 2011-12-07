@@ -37,7 +37,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
-public abstract class AbstractNodeMenu implements INodeMenu, Comparable<INodeMenu> {
+public abstract class AbstractNodeMenu implements INodeMenu {
 
 	private String text;
 	private int weight;
@@ -171,8 +171,8 @@ public abstract class AbstractNodeMenu implements INodeMenu, Comparable<INodeMen
 	/**
 	 * {@inheritDoc}
 	 */
-	public Iterator<String> getGlobalParams() {
-		Iterator it = globalParams.entrySet().iterator();
+	public Iterator<Map.Entry<String, String>> getGlobalParams() {
+		Iterator<Map.Entry<String, String>> it = globalParams.entrySet().iterator();
 		return it;
 	}
 	
@@ -249,18 +249,18 @@ public abstract class AbstractNodeMenu implements INodeMenu, Comparable<INodeMen
 	/**
 	 * {@inheritDoc}
 	 */
-	public String GETUrl() {
+	public String getGETUrl() {
 		String url = this.getUrl();
 		
-		Iterator it_global = this.getGlobalParams();
+		Iterator<Map.Entry<String, String>> it_global = this.getGlobalParams();
 		while (it_global.hasNext()) {
-	        Map.Entry pairs_glo = (Map.Entry)it_global.next();
+	        Map.Entry<String,String> pairs_glo = (Map.Entry<String,String>)it_global.next();
 	        url += "&" + pairs_glo.getKey() + "=" + pairs_glo.getValue();
 	    }
 		
-		Iterator it_par = params.entrySet().iterator();
+		Iterator<Map.Entry<String, String>> it_par = params.entrySet().iterator();
 		while (it_par.hasNext()) {
-	        Map.Entry pairs_par = (Map.Entry)it_par.next();
+	        Map.Entry<String, String> pairs_par = (Map.Entry<String, String>)it_par.next();
 	        url += "&" + pairs_par.getKey() + "=" + pairs_par.getValue();
 	    }
 		
@@ -268,17 +268,17 @@ public abstract class AbstractNodeMenu implements INodeMenu, Comparable<INodeMen
 	}
 
 	/**
-	 * Compares two INodeMenu to determine the position
-	 * @param INodeMenu
-	 * @return int
+	 * {@inheritDoc}
 	 */
 	public int compareTo(INodeMenu nm) {
 		int cmp = 0;
 		
-		if(this.weight != nm.getWeight()){
-			cmp = this.compareTo(nm);
-		}else{
-			cmp = this.getText().compareTo(nm.getText());
+		if(nm != null){			
+			if(this.weight != nm.getWeight()){
+				cmp = new Integer(this.weight).compareTo(new Integer(nm.getWeight()));
+			}else{
+				cmp = this.getText().compareToIgnoreCase(nm.getText());
+			}
 		}
 		
 		return cmp;

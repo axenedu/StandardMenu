@@ -34,6 +34,7 @@ package com.emergya.aplicaciones.standardmenu.xmlmenu;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -127,7 +128,6 @@ public class XmlParser {
 			
 			// Lista de hijos del menu
 			List<INodeMenu> childrenList = new LinkedList<INodeMenu>();
-			int nivel = 0;
 			
 			for(int i=0; i<nodeList.size();i++){
 				Node n = nodeList.get(i);
@@ -141,6 +141,7 @@ public class XmlParser {
 				//añadimos el nodo de nivel 0 al menu
 				childrenList.add(nm);
 			}
+			Collections.sort(childrenList);
 			menu.setChildren(childrenList);
 		}
 		
@@ -175,6 +176,7 @@ public class XmlParser {
 				
 				List<INodeMenu> hijos = getChildren(doc, childNode, child);
 				
+				Collections.sort(hijos);
 				child.setChildren(hijos);
 			}
 

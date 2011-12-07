@@ -34,6 +34,7 @@ package com.emergya.aplicaciones.standardmenu;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Map;
 
 
 /**
@@ -116,7 +117,7 @@ public interface IMenu {
 	 *
 	 * @return the global paramskeys
 	 */
-	public Iterator<String> getGlobalParamskeys();
+	public Iterator<Map.Entry<String, String>> getGlobalParamskeys();
 	
 	/**
 	 * Adds the global param.

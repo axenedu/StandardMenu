@@ -58,55 +58,8 @@ public class XMLMenuFactory implements IMenuFactory {
 		XmlParser parser = new XmlParser();
 		
 		menu = parser.createMenu(path);
-		imprimeMenu(menu);
 		
 		return menu;
-	}
-	
-	/**
-	 * Shows menu structure 
-	 *
-	 * @param Imenu menu
-	 */
-	public void imprimeMenu(IMenu menu){
-		
-		System.out.println("Menu: " + menu.getName() + "--------\n");
-		
-		Collection<INodeMenu> nodosNivelCero = menu.getChildren();
-		
-		for (INodeMenu iNodeMenu : nodosNivelCero) {
-			int deep = 0;
-			System.out.println(iNodeMenu.getText());
-			
-			Collection<INodeMenu> hijos = iNodeMenu.getChildren();
-			for (INodeMenu iNodeMenuHijo : hijos) {
-				imprimeNodo(deep, iNodeMenuHijo);
-			}
-			
-		}
-	}
-
-	/**
-	 * Print a node
-	 * @param deep node	
-	 * @param nodo, node 
-	 */
-	private void imprimeNodo(int deep, INodeMenu nodo){
-		
-		deep ++;
-		
-		String tab="";
-		for(int i=0; i<=deep; i++){
-			tab+="\t";
-		}
-		
-		System.out.println(tab + nodo.getText());
-		
-		Collection<INodeMenu> hijos = nodo.getChildren();
-		for (INodeMenu iNodeMenu : hijos) {
-			imprimeNodo(deep, iNodeMenu);
-		}
-		
 	}
 	
 	/**
@@ -119,7 +72,9 @@ public class XMLMenuFactory implements IMenuFactory {
 		String path = null;
 		
 		String fileName = nombre + "_menu.xml";
-		String classPath = System.getProperty("java.class.path");
+		String full_classPath = System.getProperty("java.class.path");
+		String[] separate_classPath = full_classPath.split(":");
+		String classPath = separate_classPath[0];
 		path = classPath + SEPARATOR + fileName;
 		
 		return path;
