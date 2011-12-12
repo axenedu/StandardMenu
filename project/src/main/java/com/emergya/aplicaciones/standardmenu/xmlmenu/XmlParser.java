@@ -34,11 +34,11 @@ package com.emergya.aplicaciones.standardmenu.xmlmenu;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -57,7 +57,6 @@ public class XmlParser {
 	private static final String NAME = "name";
 	private static final String DESCRIPTION = "description";
 	private static final String BASE_URL = "base-url";
-	private static final String NODES = "nodes";
 	private static final String TEXT = "text";
 	private static final String WEIGHT = "weight";
 	private static final String URL = "url";
@@ -127,7 +126,7 @@ public class XmlParser {
 			List<Node> nodeList = xpu.getListRootNodes(doc);
 			
 			// Lista de hijos del menu
-			List<INodeMenu> childrenList = new LinkedList<INodeMenu>();
+			SortedSet<INodeMenu> childrenList = new TreeSet<INodeMenu>();
 			
 			for(int i=0; i<nodeList.size();i++){
 				Node n = nodeList.get(i);
@@ -135,13 +134,12 @@ public class XmlParser {
 				INodeMenu nm = parseNode(doc, n, null);
 				
 				//Tomamos los hijos de forma recursiva
-				List<INodeMenu> children = getChildren(doc,n,nm); 
+				SortedSet<INodeMenu> children = getChildren(doc,n,nm);
 				nm.setChildren(children);
 				
 				//añadimos el nodo de nivel 0 al menu
 				childrenList.add(nm);
 			}
-			Collections.sort(childrenList);
 			menu.setChildren(childrenList);
 		}
 		
@@ -154,10 +152,10 @@ public class XmlParser {
 	 * @param doc, Document generated from menu xml
 	 * @return INodeMenu list
 	 */	
-	public List<INodeMenu> getChildren(Document doc, Node node, INodeMenu parent){
+	public SortedSet<INodeMenu> getChildren(Document doc, Node node, INodeMenu parent){
 		
 		//Lista de Hijos a devolver
-		List<INodeMenu> children = new LinkedList<INodeMenu>();
+		SortedSet<INodeMenu> children = new TreeSet<INodeMenu>();
 		
 		XmlParserUtil xpu = new XmlParserUtil();
 
@@ -174,9 +172,8 @@ public class XmlParser {
 				child = parseNode(doc,childNode,parent);
 				children.add(child);
 				
-				List<INodeMenu> hijos = getChildren(doc, childNode, child);
+				SortedSet<INodeMenu> hijos = getChildren(doc, childNode, child);
 				
-				Collections.sort(hijos);
 				child.setChildren(hijos);
 			}
 
@@ -201,7 +198,7 @@ public class XmlParser {
 		int weight = Integer.parseInt(parser.getValueLeafNode(doc, WEIGHT, n));
 		String url = parser.getValueLeafNode(doc, URL, n);
 		String iconUrl = parser.getValueLeafNode(doc, ICONURL, n);
-		List<INodeMenu> children = null;
+		SortedSet<INodeMenu> children = null;
 		Map<String, String> globalParams = parser.getGloblalParameters(doc, n);
 		Map<String, String> params = parser.getParameters(doc, n);
 		List<String> profiles = parser.getProfiles(doc, n);

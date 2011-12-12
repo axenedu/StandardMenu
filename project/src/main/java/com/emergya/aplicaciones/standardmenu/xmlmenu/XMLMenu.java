@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import com.emergya.aplicaciones.standardmenu.AbstractMenu;
 import com.emergya.aplicaciones.standardmenu.INodeMenu;
@@ -45,7 +47,7 @@ public class XMLMenu extends AbstractMenu{
 	public XMLMenu(){
 		super();
 		
-		List<INodeMenu> children = new LinkedList<INodeMenu>();
+		SortedSet<INodeMenu> children = new TreeSet<INodeMenu>();
 		Map<String, String> globlalParameters = new HashMap<String, String>();
 		List<String> profiles = new  LinkedList<String>();
 		

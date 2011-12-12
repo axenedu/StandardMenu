@@ -1,13 +1,12 @@
 package com.emergya.aplicaciones.standardmenu;
 
-
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import com.emergya.aplicaciones.standardmenu.xmlmenu.XMLMenuFactory;
 
+import junit.framework.AssertionFailedError;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -17,6 +16,12 @@ import junit.framework.TestSuite;
  */
 public class AppTest extends TestCase{
    
+	private static final String NAME = "Menu principal";
+	private static final String ALL = "All";
+	private static final String OWNER = "Owner";
+	private static final String GPARAM1 = "gparam1";
+	private static final String GVALUE1 = "gvalor1";
+	private static final String URL = "/appBase/pagina.xhtml&gparam1=gvalor1&param1=valor&param2=valor2";
 	
 	/**
      * Create the test case
@@ -41,17 +46,66 @@ public class AppTest extends TestCase{
      */
     public void testApp(){
     	
-    	System.out.println("Entrando en el test menuXML\n");
+    	System.out.println("Starting menuXML test\n");
     	
     	IMenuFactory factoria = new XMLMenuFactory();
     	try {
-			IMenu menu1 = factoria.getMenu("menu1");		
-			printMenu(menu1);
+			IMenu menu1 = factoria.getMenu("menu1");
+			try {
+				assertTrue(checkMenuFuncionality(menu1));
+			} catch (AssertionFailedError f) {
+				System.out.println("An error occurred during test menuXML");
+				fail();
+			}
+			if(checkMenuFuncionality(menu1)){				
+				printMenu(menu1);
+			}
 		} catch (MenuException e) {
 			e.printStackTrace();
 		}
     	
-    	System.out.println("Saliendo del test menuXML");
+    	System.out.println("Test menuXML finished");
+    }
+    
+    /**
+     * Check a menu. If the menu is well built, it will return true
+     * @param menu
+     * @return boolean
+     */
+    public boolean checkMenuFuncionality(IMenu menu){
+    	boolean checked = true;
+    	// Check leaf node
+    	if(!(menu.getName().equals(NAME))){
+    		return false;
+    	}
+    	// Check profiles
+    	Collection<String> profiles = menu.getProfiles();
+    	Iterator<String> proIt = profiles.iterator();
+    	String pro1 = proIt.next();
+    	String pro2 = proIt.next();
+    	if(!(pro1.equals(ALL)) || !(pro2.equals(OWNER))){
+    		return false;
+    	}
+    	// Check global parameters
+    	String gp = menu.getGlobalParam(GPARAM1);
+    	if(!gp.equals(GVALUE1)){
+    		return false;
+    	}
+    	// Check children
+    	Collection<INodeMenu> children = menu.getChildren();
+    	// Check num children
+    	if(children.size() != 2){
+    		return false;
+    	}
+    	// Check a child
+    	Iterator<INodeMenu> itCh = children.iterator();
+    	INodeMenu ch1 = itCh.next();
+    	if(!(ch1.getGETUrl().equals(URL))){
+    		return false;
+    	}
+    	
+    	return checked;
+    	
     }
     
     /**

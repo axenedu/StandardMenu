@@ -20,4 +20,4 @@
     <!ELEMENT global-params (param+)>
     	<!ELEMENT param (#PCDATA)>
     	<!ATTLIST param key ID #REQUIRED>
-	<!ELEMENT baseUrl (#PCDATA)>
+	<!ELEMENT base-url (#PCDATA)>

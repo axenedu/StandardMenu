@@ -1,10 +1,7 @@
 package com.emergya.aplicaciones.standardmenu.xmlmenu;
 
-import java.util.Collection;
-
 import com.emergya.aplicaciones.standardmenu.IMenu;
 import com.emergya.aplicaciones.standardmenu.IMenuFactory;
-import com.emergya.aplicaciones.standardmenu.INodeMenu;
 import com.emergya.aplicaciones.standardmenu.MenuException;
 
 /**
