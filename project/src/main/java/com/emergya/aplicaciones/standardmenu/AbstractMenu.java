@@ -36,103 +36,119 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
+public abstract class AbstractMenu implements IMenu {
 
-/**
- * The Interface IMenu.
- */
-public interface IMenu {
+	private String name;
+	private String description;
+	private Collection<INodeMenu> children;
+	private String baseUrl;
+	private Collection<String> profiles;
+	private Map<String, String> globalParams;
 	
 	/**
-	 * Gets the name.
-	 *
-	 * @return the name
+	 * {@inheritDoc}
 	 */
-	public String getName();
+	public String getName() {
+		return name;
+	}
 	
 	/**
-	 * Sets the name.
-	 *
-	 * @param name the new name
+	 * {@inheritDoc}
 	 */
-	public void setName(String name);
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	/**
-	 * Gets the description.
-	 *
-	 * @return the description
+	 * {@inheritDoc}
 	 */
-	public String getDescription();
+	public String getDescription() {
+		return description;
+	}
 	
 	/**
-	 * Sets the descripction.
-	 *
-	 * @param description the new descripction
+	 * {@inheritDoc}
 	 */
-	public void setDescripction(String description);
+	public void setDescripction(String description) {
+		this.description = description;
+	}
 	
 	/**
-	 * Gets the children.
-	 *
-	 * @return the children
+	 * {@inheritDoc}
 	 */
-	public Collection<INodeMenu> getChildren();
+	public Collection<INodeMenu> getChildren() {
+		return children;
+	}
 	
 	/**
-	 * Sets the children.
-	 *
-	 * @param children the new children
+	 * {@inheritDoc}
 	 */
-	public void setChildren(Collection<INodeMenu> children);
+	public void setChildren(Collection<INodeMenu> children) {
+		this.children = children;
+	}
 	
 	/**
-	 * Gets the base url.
-	 *
-	 * @return the base url
+	 * {@inheritDoc}
 	 */
-	public String getBaseUrl();
+	public String getBaseUrl() {
+		return baseUrl;
+	}
 	
 	/**
-	 * Sets the base url.
-	 *
-	 * @param baseUrl the new base url
+	 * {@inheritDoc}
 	 */
-	public void setBaseUrl(String baseUrl);
+	public void setBaseUrl(String baseUrl) {
+		this.baseUrl = baseUrl;
+	}
 	
 	/**
-	 * Gets the profiles.
-	 *
-	 * @return the profiles
+	 * {@inheritDoc}
 	 */
-	public Collection<String> getProfiles();
+	public Collection<String> getProfiles() {
+		return profiles;
+	}
 	
 	/**
-	 * Sets the profiles.
-	 *
-	 * @param profiles the new profiles
+	 * {@inheritDoc}
 	 */
-	public void setProfiles(Collection<String> profiles);
+	public void setProfiles(Collection<String> profiles) {
+		this.profiles = profiles;		
+	}
 	
 	/**
-	 * Gets the global paramskeys.
-	 *
-	 * @return the global paramskeys
+	 * {@inheritDoc}
 	 */
-	public Iterator<Map.Entry<String, String>> getGlobalParamskeys();
+	public Iterator<Map.Entry<String, String>> getGlobalParamskeys() {
+		Iterator<Map.Entry<String, String>> it = globalParams.entrySet().iterator();
+		return it;
+	}
 	
 	/**
-	 * Adds the global param.
-	 *
-	 * @param key the key
-	 * @param value the value
+	 * {@inheritDoc}
 	 */
-	public void addGlobalParam(String key, String value);
+	public void addGlobalParam(String key, String value) {
+		globalParams.put(key, value);
+	}
 	
 	/**
-	 * Gets the global param.
-	 *
-	 * @param key the key
-	 * @return the global param
+	 * {@inheritDoc}
 	 */
-	public String getGlobalParam(String key);
+	public String getGlobalParam(String key) {
+		return globalParams.get(key);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Map<String, String> getGlobalParams() {
+		return globalParams;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setGlobalParams(Map<String, String> globalParams) {
+		this.globalParams = globalParams;
+	}
 	
 }

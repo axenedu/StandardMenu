@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT menu (name, description?, nodes?, profiles?, global-params?, base-url)>
+	<!ELEMENT name (#PCDATA)>
+    <!ELEMENT description (#PCDATA)>
+	<!ELEMENT nodes (node+)>
+		<!ELEMENT node (text, weight, url, iconUrl?, children?, params?, global-params?, profiles?, enabled?, collapsed?, active?)>
+			<!ELEMENT text (#PCDATA)>
+			<!ELEMENT weight (#PCDATA)>
+			<!ELEMENT url (#PCDATA)>
+			<!ELEMENT iconUrl (#PCDATA)>
+			<!ELEMENT children (node+)>
+			<!ELEMENT profiles (profile+)>
+			<!ELEMENT global-params (param+)>
+			<!ELEMENT params (param+)>
+			<!ELEMENT enabled (#PCDATA)>
+			<!ELEMENT collapsed (#PCDATA)>
+			<!ELEMENT active (#PCDATA)>
+	<!ELEMENT profiles (profile+)>
+		<!ELEMENT profile (#PCDATA)>
+    <!ELEMENT global-params (param+)>
+    	<!ELEMENT param (#PCDATA)>
+    	<!ATTLIST param key ID #REQUIRED>
+	<!ELEMENT base-url (#PCDATA)>
