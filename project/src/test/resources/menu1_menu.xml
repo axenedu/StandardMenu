@@ -1,0 +1,69 @@
+<!DOCTYPE menu SYSTEM "menu.dtd">
+<menu>
+    <name>Menu principal</name>
+    <description>Menu principal del portal web</description>
+    <nodes>
+        <node>
+            <text>Entrada 1</text>
+            <weight>1</weight>
+            <url>/appBase/pagina.xhtml</url>
+            <iconUrl>/img/botonGuardar.gif</iconUrl>
+            <children>
+            	<node>
+            		<text>Entrada 1.1</text>
+            		<weight>1</weight>
+            		<url>/appBase/pagina11.xhtml</url>
+            		<children>
+            			<node>
+		            		<text>Entrada 1.1.1</text>
+		            		<weight>1</weight>
+		            		<url>/appBase/pagina111.xhtml</url>
+		            	</node>
+		            	<node>
+		            		<text>Entrada 1.1.2</text>
+		            		<weight>2</weight>
+		            		<url>/appBase/pagina112.xhtml</url>
+		            	</node>
+            		</children>
+            	</node>
+            	<node>
+            		<text>Entrada 1.2</text>
+            		<weight>2</weight>
+            		<url>/appBase/pagina12.xhtml</url>
+            	</node>
+            </children>
+            <params>            
+                <param key="param1">valor</param>
+                <param key="param2">valor2</param>    
+            </params>    
+            <global-params>    
+                <param key="gparam1">gvalor1</param>
+            </global-params>
+            <profiles>
+            	<profile>All</profile>
+            </profiles>
+        </node>
+        <node>
+            <text>Entrada 2</text>
+            <weight>1</weight>
+            <url>/appBase/pagina2.xhtml</url>
+            <params>            
+                <param key="clave3">valor3</param>
+                <param key="clave4">valor4</param>    
+            </params>
+            <profiles>
+            	<profile>All</profile>
+            </profiles>
+            <enabled>false</enabled>
+        </node>
+    </nodes>
+    <profiles>
+    	<profile>All</profile>
+    	<profile>Owner</profile>
+    </profiles>
+    <global-params>
+        <param key="gparam1">gvalor1</param>
+        <param key="gparam2">gvalor2</param>
+    </global-params>
+    <base-url>localhost:8080/miapp</base-url>
+</menu>
