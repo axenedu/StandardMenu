@@ -36,12 +36,12 @@
                 <param key="param1">valor</param>
                 <param key="param2">valor2</param>    
             </params>    
-            <global-params>    
+            <global-paramsNode>    
                 <param key="gparam1">gvalor1</param>
-            </global-params>
-            <profiles>
+            </global-paramsNode>
+            <profilesNode>
             	<profile>All</profile>
-            </profiles>
+            </profilesNode>
         </node>
         <node>
             <text>Entrada 2</text>
@@ -51,9 +51,9 @@
                 <param key="clave3">valor3</param>
                 <param key="clave4">valor4</param>    
             </params>
-            <profiles>
+            <profilesNode>
             	<profile>All</profile>
-            </profiles>
+            </profilesNode>
             <enabled>false</enabled>
         </node>
     </nodes>
@@ -62,8 +62,8 @@
     	<profile>Owner</profile>
     </profiles>
     <global-params>
-        <param key="gparam1">gvalor1</param>
         <param key="gparam2">gvalor2</param>
+        <param key="gparam3">gvalor3</param>
     </global-params>
     <base-url>localhost:8080/miapp</base-url>
 </menu>

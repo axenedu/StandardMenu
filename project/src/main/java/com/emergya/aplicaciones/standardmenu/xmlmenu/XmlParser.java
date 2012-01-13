@@ -199,9 +199,9 @@ public class XmlParser {
 		String url = parser.getValueLeafNode(doc, URL, n);
 		String iconUrl = parser.getValueLeafNode(doc, ICONURL, n);
 		SortedSet<INodeMenu> children = null;
-		Map<String, String> globalParams = parser.getGloblalParameters(doc, n);
+		Map<String, String> globalParams = parser.getGloblalParametersNode(doc, n);
 		Map<String, String> params = parser.getParameters(doc, n);
-		List<String> profiles = parser.getProfiles(doc, n);
+		List<String> profiles = parser.getProfilesNode(doc, n);
 		boolean enabled = parser.getBoolean(doc, ENABLED, n); 		
 		boolean collapsed = parser.getBoolean(doc, COLLAPSED, n);
 		boolean active = parser.getBoolean(doc, ACTIVE, n);
