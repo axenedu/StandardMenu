@@ -45,10 +45,12 @@ import org.w3c.dom.NodeList;
 public class XmlParserUtil {
 	
 	private static final String GLOBAL_PARAMS = "global-params";
+	private static final String GLOBAL_PARAMS_NODE = "global-paramsNode";
 	private static final String PARAMS = "params";
 	private static final String PARAM = "param";
 	private static final String KEY = "key";
 	private static final String PROFILES = "profiles";
+	private static final String PROFILES_NODE = "profilesNode";
 	private static final String PROFILE = "profile";
 	private static final String NODES = "nodes";
 	private static final String NODE = "node";
@@ -83,6 +85,30 @@ public class XmlParserUtil {
 		Map<String, String> globalParameters = new HashMap<String, String>();
 		
 		Node gpNode = getChildNode(doc, father, GLOBAL_PARAMS);
+		
+		if(gpNode != null){			
+			Element gpElement = (Element)gpNode;
+			NodeList params = gpElement.getElementsByTagName(PARAM);
+			for(int j=0;j<params.getLength();j++){
+				Node param = params.item(j);
+				globalParameters.put(getValueAttribute(param, KEY),param.getFirstChild().getNodeValue());
+			}
+		}
+		
+		return globalParameters;
+	}
+	
+	/**
+	 * gets a map with global params of a Node tag
+	 * @param doc, Document generated from menu xml
+	 * @param father, node with the info
+	 * @return map with global params
+	 */
+	public Map<String, String> getGloblalParametersNode(Document doc, Node father){
+		
+		Map<String, String> globalParameters = new HashMap<String, String>();
+		
+		Node gpNode = getChildNode(doc, father, GLOBAL_PARAMS_NODE);
 		
 		if(gpNode != null){			
 			Element gpElement = (Element)gpNode;
@@ -159,7 +185,7 @@ public class XmlParserUtil {
 	}
 	
 	/**
-	 * Gets profile list of a node
+	 * Gets profile list of a menu
 	 * @param doc, Document generated from menu xml
 	 * @param father, parent node
 	 * @return profile list
@@ -169,6 +195,30 @@ public class XmlParserUtil {
 		List<String> profilesList = new LinkedList<String>();
 		
 		Node gpNode = getChildNode(doc, father, PROFILES);
+		
+		if(gpNode != null){			
+			Element gpElement = (Element)gpNode;
+			NodeList profiles = gpElement.getElementsByTagName(PROFILE);
+			for(int j=0;j<profiles.getLength();j++){
+				Node profile = profiles.item(j);
+				profilesList.add(profile.getFirstChild().getNodeValue());
+			}
+		}
+		
+		return profilesList;
+	}
+	
+	/**
+	 * Gets profile list of a node tag
+	 * @param doc, Document generated from menu xml
+	 * @param father, parent node
+	 * @return profile list
+	 */
+	public List<String> getProfilesNode(Document doc, Node father){
+		
+		List<String> profilesList = new LinkedList<String>();
+		
+		Node gpNode = getChildNode(doc, father, PROFILES_NODE);
 		
 		if(gpNode != null){			
 			Element gpElement = (Element)gpNode;

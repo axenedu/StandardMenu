@@ -19,8 +19,8 @@ public class AppTest extends TestCase{
 	private static final String NAME = "Menu principal";
 	private static final String ALL = "All";
 	private static final String OWNER = "Owner";
-	private static final String GPARAM1 = "gparam1";
-	private static final String GVALUE1 = "gvalor1";
+	private static final String GPARAM1 = "gparam2";
+	private static final String GVALUE1 = "gvalor2";
 	private static final String URL = "/appBase/pagina.xhtml&gparam1=gvalor1&param1=valor&param2=valor2";
 	
 	/**
