@@ -38,42 +38,19 @@ import com.emergya.aplicaciones.standardmenu.MenuException;
 
 public class XMLMenuFactory implements IMenuFactory {
 	
-	private static final String SEPARATOR = "/";
-	
 	/**
 	 * Gets Imenu from xml name
 	 * @param nombre, xml name
 	 * @return IMenu, generated menu
 	 */
-	public IMenu getMenu(String nombre) throws MenuException {
-		
-		// Xml path
-		String path = getPathByName(nombre);
+	public IMenu getMenu(String url) throws MenuException {
 		
 		IMenu menu = null;
 		// Parser to read 
 		XmlParser parser = new XmlParser();
 		
-		menu = parser.createMenu(path);
+		menu = parser.createMenu(url);
 		
 		return menu;
-	}
-	
-	/**
-	 * Gets a path of xml from name of file
-	 *
-	 * @param description the new descripction
-	 */
-	private String getPathByName(String nombre){
-		
-		String path = null;
-		
-		String fileName = nombre + "_menu.xml";
-		String full_classPath = System.getProperty("java.class.path");
-		String[] separate_classPath = full_classPath.split(":");
-		String classPath = separate_classPath[0];
-		path = classPath + SEPARATOR + fileName;
-		
-		return path;
 	}
 }
