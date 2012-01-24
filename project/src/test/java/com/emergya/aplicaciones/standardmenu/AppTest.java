@@ -1,5 +1,6 @@
 package com.emergya.aplicaciones.standardmenu;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -50,7 +51,16 @@ public class AppTest extends TestCase{
     	
     	IMenuFactory factoria = new XMLMenuFactory();
     	try {
-			IMenu menu1 = factoria.getMenu("menu1");
+    		
+    		String path = null;
+			String nombre = "menu1";
+			String fileName = nombre + "_menu.xml";
+			String full_classPath = System.getProperty("java.class.path");
+			String[] separate_classPath = full_classPath.split(":");
+			String classPath = separate_classPath[0];
+			path = classPath + File.separatorChar+ fileName;
+    		
+			IMenu menu1 = factoria.getMenu(path);
 			try {
 				assertTrue(checkMenuFuncionality(menu1));
 			} catch (AssertionFailedError f) {
