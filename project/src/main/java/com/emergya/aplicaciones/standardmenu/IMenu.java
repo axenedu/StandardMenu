@@ -42,6 +42,22 @@ import java.util.Map;
  */
 public interface IMenu {
 	
+	
+	/**
+	 * Gets the id_menu.
+	 *
+	 * @return the id_menu
+	 */
+	public String getId_menu();
+	
+	
+	/**
+	 * Sets the id_menu.
+	 *
+	 * @param id_menu the new id_menu
+	 */
+	public void setId_menu(String id_menu);
+	
 	/**
 	 * Gets the name.
 	 *

@@ -4,7 +4,7 @@
   <groupId>com.emergya.aplicaciones</groupId>
   <artifactId>standardmenu</artifactId>
   <packaging>jar</packaging>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.2-SNAPSHOT</version>
   <name>standardmenu</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -30,7 +30,32 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
-            </plugins>
+            
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+        </plugins>
   </build>
   
   <distributionManagement>

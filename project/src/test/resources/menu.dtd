@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT menu (name, description?, nodes?, profiles?, global-params?, base-url)>
+<!ELEMENT menu (id_menu, name, description?, nodes?, profiles?, global-params?, base-url)>
+	<!ELEMENT id_menu (#PCDATA)>
 	<!ELEMENT name (#PCDATA)>
     <!ELEMENT description (#PCDATA)>
 	<!ELEMENT nodes (node+)>
-		<!ELEMENT node (text, weight, url, iconUrl?, children?, params?, global-paramsNode?, profilesNode?, enabled?, collapsed?, active?)>
+		<!ELEMENT node (id_node, text, weight, url, iconUrl?, children?, params?, global-paramsNode?, profilesNode?, enabled?, collapsed?, active?)>
+			<!ELEMENT id_node (#PCDATA)>
 			<!ELEMENT text (#PCDATA)>
 			<!ELEMENT weight (#PCDATA)>
 			<!ELEMENT url (#PCDATA)>

@@ -1,25 +1,30 @@
 <!DOCTYPE menu SYSTEM "menu.dtd">
 <menu>
+	<id_menu>1</id_menu>
     <name>Menu principal</name>
     <description>Menu principal del portal web</description>
     <nodes>
         <node>
+        	<id_node>2</id_node>
             <text>Entrada 1</text>
             <weight>1</weight>
             <url>/appBase/pagina.xhtml</url>
             <iconUrl>/img/botonGuardar.gif</iconUrl>
             <children>
             	<node>
+            		<id_node>3</id_node>
             		<text>Entrada 1.1</text>
             		<weight>1</weight>
             		<url>/appBase/pagina11.xhtml</url>
             		<children>
             			<node>
+            				<id_node>4</id_node>
 		            		<text>Entrada 1.1.1</text>
 		            		<weight>1</weight>
 		            		<url>/appBase/pagina111.xhtml</url>
 		            	</node>
 		            	<node>
+		            		<id_node>5</id_node>
 		            		<text>Entrada 1.1.2</text>
 		            		<weight>2</weight>
 		            		<url>/appBase/pagina112.xhtml</url>
@@ -27,6 +32,7 @@
             		</children>
             	</node>
             	<node>
+            		<id_node>5</id_node>
             		<text>Entrada 1.2</text>
             		<weight>2</weight>
             		<url>/appBase/pagina12.xhtml</url>
@@ -44,6 +50,7 @@
             </profilesNode>
         </node>
         <node>
+        	<id_node>6</id_node>
             <text>Entrada 2</text>
             <weight>1</weight>
             <url>/appBase/pagina2.xhtml</url>
