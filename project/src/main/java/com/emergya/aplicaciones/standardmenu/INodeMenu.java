@@ -42,6 +42,20 @@ import java.util.Map;
 public interface INodeMenu extends Comparable<INodeMenu>{
 
 	/**
+	 * Gets the id_node.
+	 *
+	 * @return the id_node
+	 */
+	public String getId_node();
+	
+	/**
+	 * Sets the id_node.
+	 *
+	 * @param id_node the id_node
+	 */
+	public void setId_node(String id_node);
+	
+	/**
 	 * Gets the text.
 	 *
 	 * @return the text

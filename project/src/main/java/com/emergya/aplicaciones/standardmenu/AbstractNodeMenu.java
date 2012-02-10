@@ -39,6 +39,7 @@ import java.util.Map;
 
 public abstract class AbstractNodeMenu implements INodeMenu {
 
+	private String id_node;
 	private String text;
 	private int weight;
 	private String url;
@@ -52,6 +53,20 @@ public abstract class AbstractNodeMenu implements INodeMenu {
 	private boolean collapsed;
 	private boolean active;
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getId_node() {
+		return id_node;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setId_node(String id_node) {
+		this.id_node = id_node;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */

@@ -54,6 +54,8 @@ import com.emergya.aplicaciones.standardmenu.MenuException;
 
 public class XmlParser {
 	
+	private static final String ID_MENU = "id_menu";
+	private static final String ID_NODE = "id_node";
 	private static final String NAME = "name";
 	private static final String DESCRIPTION = "description";
 	private static final String BASE_URL = "base-url";
@@ -107,6 +109,7 @@ public class XmlParser {
 		XmlParserUtil xpu = new XmlParserUtil();
 		Node root = doc.getDocumentElement();
 		
+		menu.setId_menu(xpu.getValueLeafNode(doc, ID_MENU, root));
 		menu.setName(xpu.getValueLeafNode(doc, NAME, root));
 		menu.setDescripction(xpu.getValueLeafNode(doc, DESCRIPTION, root));
 		menu.setBaseUrl(xpu.getValueLeafNode(doc, BASE_URL, root));
@@ -194,6 +197,7 @@ public class XmlParser {
 		// Parseo directo desde el xml
 		XmlParserUtil parser = new XmlParserUtil();
 		
+		String id_node = parser.getValueLeafNode(doc, ID_NODE, n);
 		String text = parser.getValueLeafNode(doc, TEXT, n);
 		int weight = Integer.parseInt(parser.getValueLeafNode(doc, WEIGHT, n));
 		String url = parser.getValueLeafNode(doc, URL, n);
@@ -207,6 +211,7 @@ public class XmlParser {
 		boolean active = parser.getBoolean(doc, ACTIVE, n);
 		
 		// Insercion valores en el nodo
+		nodeMenu.setId_node(id_node);
 		nodeMenu.setText(text);
 		nodeMenu.setWeight(weight);
 		nodeMenu.setUrl(url);

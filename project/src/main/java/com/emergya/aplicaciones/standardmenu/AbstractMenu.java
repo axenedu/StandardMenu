@@ -38,12 +38,27 @@ import java.util.Map;
 
 public abstract class AbstractMenu implements IMenu {
 
+	private String id_menu;
 	private String name;
 	private String description;
 	private Collection<INodeMenu> children;
 	private String baseUrl;
 	private Collection<String> profiles;
 	private Map<String, String> globalParams;
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getId_menu() {
+		return id_menu;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setId_menu(String id_menu) {
+		this.id_menu = id_menu;
+	}
 	
 	/**
 	 * {@inheritDoc}

@@ -129,6 +129,7 @@ public class AppTest extends TestCase{
     	imprimeMenuStructure(menu);
     	
     	System.out.println("\n<-Printing info main menu->\n");
+    	System.out.println("Menu id: " + menu.getId_menu());
     	System.out.println("Menu name: " + menu.getName());
     	
     	if(menu.getDescription() != null){    		
@@ -225,6 +226,7 @@ public class AppTest extends TestCase{
 	 */
 	public void printInfoChild(INodeMenu child){
 		
+		System.out.println("Id: " + child.getId_node());
 		System.out.println("Name: " + child.getText());
 		System.out.println("Weight: " + child.getWeight());
 		System.out.println("Url: " + child.getUrl());
