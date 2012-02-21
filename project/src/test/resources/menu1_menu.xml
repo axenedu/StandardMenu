@@ -1,5 +1,5 @@
-<!DOCTYPE menu SYSTEM "menu.dtd">
-<menu>
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="classpath:com/emergya/aplicaciones/standardmenu/menu.xsd">
 	<id_menu>1</id_menu>
     <name>Menu principal</name>
     <description>Menu principal del portal web</description>

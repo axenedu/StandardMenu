@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+  <xs:element name="menu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="id_menu"/>
+        <xs:element ref="name"/>
+        <xs:element minOccurs="0" ref="description"/>
+        <xs:element minOccurs="0" ref="nodes"/>
+        <xs:element minOccurs="0" ref="profiles"/>
+        <xs:element minOccurs="0" ref="global-params"/>
+        <xs:element ref="base-url"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="id_menu" type="xs:string"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="nodes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="node"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="node">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="id_node"/>
+        <xs:element ref="text"/>
+        <xs:element ref="weight"/>
+        <xs:element ref="url"/>
+        <xs:element minOccurs="0" ref="iconUrl"/>
+        <xs:element minOccurs="0" ref="children"/>
+        <xs:element minOccurs="0" ref="params"/>
+        <xs:element minOccurs="0" ref="global-paramsNode"/>
+        <xs:element minOccurs="0" ref="profilesNode"/>
+        <xs:element minOccurs="0" ref="enabled"/>
+        <xs:element minOccurs="0" ref="collapsed"/>
+        <xs:element minOccurs="0" ref="active"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="id_node" type="xs:string"/>
+  <xs:element name="text" type="xs:string"/>
+  <xs:element name="weight" type="xs:string"/>
+  <xs:element name="url" type="xs:string"/>
+  <xs:element name="iconUrl" type="xs:string"/>
+  <xs:element name="children">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="node"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="profilesNode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="profile"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="global-paramsNode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="param"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="params">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="param"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="enabled" type="xs:string"/>
+  <xs:element name="collapsed" type="xs:string"/>
+  <xs:element name="active" type="xs:string"/>
+  <xs:element name="profiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="profile"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="profile" type="xs:string"/>
+  <xs:element name="global-params">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="param"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="param">
+    <xs:complexType mixed="true">
+      <xs:attribute name="key" use="required" type="xs:ID"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="base-url" type="xs:string"/>
+</xs:schema>

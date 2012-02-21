@@ -40,16 +40,16 @@ public class XMLMenuFactory implements IMenuFactory {
 	
 	/**
 	 * Gets Imenu from xml name
-	 * @param nombre, xml name
+	 * @param resourceName, xml name
 	 * @return IMenu, generated menu
 	 */
-	public IMenu getMenu(String url) throws MenuException {
+	public IMenu getMenu(String resourceName) throws MenuException {
 		
 		IMenu menu = null;
 		// Parser to read 
 		XmlParser parser = new XmlParser();
 		
-		menu = parser.createMenu(url);
+		menu = parser.createMenu(resourceName);
 		
 		return menu;
 	}

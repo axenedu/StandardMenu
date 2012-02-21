@@ -52,15 +52,9 @@ public class AppTest extends TestCase{
     	IMenuFactory factoria = new XMLMenuFactory();
     	try {
     		
-    		String path = null;
-			String nombre = "menu1";
-			String fileName = nombre + "_menu.xml";
-			String full_classPath = System.getProperty("java.class.path");
-			String[] separate_classPath = full_classPath.split(":");
-			String classPath = separate_classPath[0];
-			path = classPath + File.separatorChar+ fileName;
+			String nombreRecurso = "menu1_menu.xml";
     		
-			IMenu menu1 = factoria.getMenu(path);
+			IMenu menu1 = factoria.getMenu(nombreRecurso);
 			try {
 				assertTrue(checkMenuFuncionality(menu1));
 			} catch (AssertionFailedError f) {
@@ -72,6 +66,7 @@ public class AppTest extends TestCase{
 			}
 		} catch (MenuException e) {
 			e.printStackTrace();
+			assertFalse(true);
 		}
     	
     	System.out.println("Test menuXML finished");

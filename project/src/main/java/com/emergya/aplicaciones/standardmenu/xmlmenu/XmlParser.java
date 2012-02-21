@@ -32,8 +32,8 @@ package com.emergya.aplicaciones.standardmenu.xmlmenu;
  * executable file might be covered by the GNU General Public License.
  */
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -77,20 +77,30 @@ public class XmlParser {
 	 * @throws IOException
 	 * @throws MenuException 
 	 */
-	public IMenu createMenu(String path) throws MenuException{
+	public IMenu createMenu(String resourceName) throws MenuException{
 		
 		IMenu menu = null;
 		Document doc = null;
-		File f;
 		
+		InputStream fichero = null;
 		try {
-			f = new File(path);
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
-			doc = db.parse(f);
+			
+			fichero = this.getClass().getClassLoader().getResourceAsStream(resourceName);
+			doc = db.parse(fichero);
 			menu = readMenu(doc);
+			fichero.close();
 		} catch (Exception e) {
 			throw new MenuException(e, MSG, new Integer(0), "");
+		}finally{
+			if(fichero!=null){
+				try {
+					fichero.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		return menu;
